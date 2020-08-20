@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
-import Header from './Header.js';
-import Text from './Text.js';
+import Header from './Header';
+import Sidebar from './Sidebar';
+import Content from './Content';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App wrapper">
 		<Header />
-		<Text />
-    </div>
+		<Sidebar />
+		<Content />
+	</div>
   );
 }
 
