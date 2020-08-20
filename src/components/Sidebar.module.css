@@ -1,0 +1,10 @@
+.sidebar
+{
+  background-color: var(--green);
+  grid-area: sidebar;
+}
+
+.sidebar__item
+{
+  color: #fff;
+}
