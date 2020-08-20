@@ -1,5 +1,5 @@
 import React from 'react';
-import Profile from './Profile';
+import Profile from './../Profile/Profile.js';
 import backgroundImage from './background.jpg';
 import styles from './Content.module.css';
 
