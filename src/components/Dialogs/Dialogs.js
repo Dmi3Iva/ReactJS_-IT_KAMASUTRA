@@ -23,7 +23,21 @@ const Message = props => {
 }
 
 const Dialogs = () => {
-    console.log(styles);
+    let ContactsData = [
+        {id: 1, name: "Andrew"},
+        {id: 2, name: "Oleg"},
+        {id: 3, name: "Sasha"},
+        {id: 4, name: "Sveta"},
+        {id: 5, name: "Olga"},
+        {id: 6, name: "Kristy"}
+    ];
+
+    let MessagesData = [
+        {avatar :"ava", name : "Andrew", text : "How is your day?"},
+        {avatar :"ava", name : "Andrew", text : "How is your day?"},
+        {avatar :"ava", name : "Andrew", text : "How is your day?"}
+    ];
+
     return (<div>
         <h2 className={styles.dialogs__header}>Dialogs</h2>
         <div className={styles.dialogs}>
