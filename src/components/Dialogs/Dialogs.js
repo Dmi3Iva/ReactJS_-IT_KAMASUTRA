@@ -5,7 +5,7 @@ import {NavLink} from "react-router-dom";
 const DialogItem = props => {
     return (
         <li>
-            <NavLink to={props.url}>{props.name}</NavLink>
+            <NavLink to={"/dialogs/" + props.id}>{props.name}</NavLink>
         </li>
     );
 }
@@ -33,31 +33,24 @@ const Dialogs = () => {
     ];
 
     let MessagesData = [
-        {avatar :"ava", name : "Andrew", text : "How is your day?"},
-        {avatar :"ava", name : "Andrew", text : "How is your day?"},
-        {avatar :"ava", name : "Andrew", text : "How is your day?"}
+        {id: 1, avatar: "ava", name: "Andrew", text: "How is your day?"},
+        {id: 2, avatar: "ava", name: "Me", text: "It's ok, thank you for asking"},
+        {id: 3, avatar: "ava", name: "Andrew", text: "You're welcome!"}
     ];
 
-    return (<div>
-        <h2 className={styles.dialogs__header}>Dialogs</h2>
-        <div className={styles.dialogs}>
-            <ul className={styles.dialogs__list}>
-                <DialogItem name="Andrew" url="/dialogs/1"/>
-                <DialogItem name="Oleg" url="/dialogs/2"/>
-                <DialogItem name="Sasha" url="/dialogs/3"/>
-                <DialogItem name="Sveta" url="/dialogs/4"/>
-                <DialogItem name="Olga" url="/dialogs/5"/>
-                <DialogItem name="Kristy" url="/dialogs/6"/>
-                <DialogItem name="Katerine" url="/dialogs/7"/>
-                <DialogItem name="Luisa" url="/dialogs/8"/>
-            </ul>
-            <div className={`${styles.dialogs__messages} ${styles.messages}`}>
-                <Message avatar={"ava"} name={"Andrew"} text={"How is your day today?"} />
-                <Message avatar={"ava"} name={"Me"} text={"Okay. Thank you for asking"} />
-                <Message avatar={"ava"} name={"Andrew"} text={"You're welcome"} />
+    return (
+        <div>
+            <h2 className={styles.dialogs__header}>Dialogs</h2>
+            <div className={styles.dialogs}>
+                <ul className={styles.dialogs__list}>
+                    {ContactsData.map((x) => <DialogItem name={x.name} id={x.id}/>)}
+                </ul>
+                <div className={`${styles.dialogs__messages} ${styles.messages}`}>
+                    {MessagesData.map((x) => <Message avatar={x.avatar} name={x.name} text={x.text} id={x.id}/>)}
+                </div>
             </div>
         </div>
-    </div>);
+    );
 }
 
 export default Dialogs;
