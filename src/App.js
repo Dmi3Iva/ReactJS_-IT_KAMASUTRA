@@ -12,8 +12,9 @@ const App = () => {
 		<div className={`${styles.App} ${styles.wrapper}`}>
 			<Header />
 			<Sidebar />
-			<Route path='/profile' component={Content}/>
-			<Route path='/messages' component={Dialogs}/>
+			<Route exact path='/profile' component={Content}/>
+			<Route exact path='/messages' component={Dialogs}/>
+			{/*<Route path='/dialogs' component={Dialogs}/>*/}
 		</div>
 	  </BrowserRouter>
   );
