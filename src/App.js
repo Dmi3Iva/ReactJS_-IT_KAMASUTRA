@@ -6,14 +6,14 @@ import Dialogs from './components/Dialogs/Dialogs.js';
 import styles from './App.module.css';
 import {BrowserRouter, Route} from 'react-router-dom';
 
-const App = () => {
+const App = (props) => {
   return (
 	  <BrowserRouter>
 		<div className={`${styles.App} ${styles.wrapper}`}>
 			<Header />
 			<Sidebar />
-			<Route exact path='/profile' component={Content}/>
-			<Route exact path='/messages' component={Dialogs}/>
+			<Route exact path='/profile' render={ () => <Content PostsData={props.PostsData} />}/>
+			<Route exact path='/messages' render={()=><Dialogs ContactsData={props.ContactsData} MessagesData={props.MessagesData}/>}/>
 			{/*<Route path='/dialogs' component={Dialogs}/>*/}
 		</div>
 	  </BrowserRouter>
