@@ -5,7 +5,8 @@ const Post = (props) => {
 	console.log(props);
 	return (
 		<div className={styles.post}>
-			{props.text}
+			<p>{props.text}</p>
+			<span>{props.likesCount}</span>
 		</div>
 	);
 }
