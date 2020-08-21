@@ -6,7 +6,7 @@ import styles from './Content.module.css';
 function Content(){
 	return (
 		<main className={styles.content}>
-			<img className={styles.content__wallpaper} src={backgroundImage}/>
+			<img className={styles.content__wallpaper} src={backgroundImage} alt="background"/>
 			Main content
 			<Profile />
 		</main>

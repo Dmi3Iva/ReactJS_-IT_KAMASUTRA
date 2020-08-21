@@ -4,15 +4,18 @@ import Sidebar from './components/Sidebar/Sidebar.js';
 import Content from './components/Content/Content.js';
 import Dialogs from './components/Dialogs/Dialogs.js';
 import styles from './App.module.css';
+import {BrowserRouter, Route} from 'react-router-dom';
 
-function App() {
+const App = (props) => {
   return (
-    <div className={`${styles.App} ${styles.wrapper}`}>
-		<Header />
-		<Sidebar />
-		{/*<Content />*/}
-		<Dialogs className={styles.content}/>
-	</div>
+	  <BrowserRouter>
+		<div className={`${styles.App} ${styles.wrapper}`}>
+			<Header />
+			<Sidebar />
+			<Route path='/profile' component={Content}/>
+			<Route path='/messages' component={Dialogs}/>
+		</div>
+	  </BrowserRouter>
   );
 }
 
