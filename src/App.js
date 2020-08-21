@@ -6,7 +6,7 @@ import Dialogs from './components/Dialogs/Dialogs.js';
 import styles from './App.module.css';
 import {BrowserRouter, Route} from 'react-router-dom';
 
-const App = (props) => {
+const App = () => {
   return (
 	  <BrowserRouter>
 		<div className={`${styles.App} ${styles.wrapper}`}>
