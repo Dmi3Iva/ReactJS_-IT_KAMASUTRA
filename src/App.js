@@ -14,7 +14,6 @@ const App = (props) => {
 			<Sidebar />
 			<Route exact path='/profile' render={ () => <Content PostsData={props.PostsData} />}/>
 			<Route exact path='/messages' render={()=><Dialogs ContactsData={props.ContactsData} MessagesData={props.MessagesData}/>}/>
-			{/*<Route path='/dialogs' component={Dialogs}/>*/}
 		</div>
 	  </BrowserRouter>
   );
