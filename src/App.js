@@ -12,8 +12,8 @@ const App = (props) => {
 		<div className={`${styles.App} ${styles.wrapper}`}>
 			<Header />
 			<Sidebar />
-			<Route exact path='/profile' render={ () => <Content PostsData={props.PostsData} />}/>
-			<Route exact path='/messages' render={()=><Dialogs ContactsData={props.ContactsData} MessagesData={props.MessagesData}/>}/>
+		<Route exact path='/profile' render={ () => <Content PostsData={props.AppState.profilePage.PostsData} />}/>
+			<Route exact path='/messages' render={()=><Dialogs MessagesData={props.AppState.MessagesPage}/>}/>
 		</div>
 	  </BrowserRouter>
   );

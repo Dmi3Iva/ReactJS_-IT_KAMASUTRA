@@ -11,10 +11,10 @@ const Dialogs = (props) => {
             <h2 className={styles.dialogs__header}>Dialogs</h2>
             <div className={styles.dialogs}>
                 <ul className={styles.dialogs__list}>
-                    {props.ContactsData.map((x) => <DialogItem name={x.name} id={x.id}/>)}
+                    {props.MessagesData.ContactsData.map((x) => <DialogItem name={x.name} id={x.id}/>)}
                 </ul>
                 <div className={`${styles.dialogs__messages} ${styles.messages}`}>
-                    {props.MessagesData.map((x) => <Message avatar={x.avatar} name={x.name} text={x.text} id={x.id}/>)}
+                    {props.MessagesData.MessagesData.map((x) => <Message avatar={x.avatar} name={x.name} text={x.text} id={x.id}/>)}
                 </div>
             </div>
         </div>
