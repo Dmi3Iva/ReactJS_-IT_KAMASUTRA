@@ -9,13 +9,18 @@ let State = {
         addPost : postMessage => {
             let newPost = {
                 id: 10,
-                message: postMessage.current.value,
+                message: State.profilePage.newPostText,
                 likesCount: 0
             };
             State.profilePage.PostsData.push(newPost);
-            postMessage.current.value = '';
+            State.profilePage.newPostText = '';
             renderReactDom(State);
-        }
+        },
+        updateNewPostText : newText => {
+            State.profilePage.newPostText = newText;
+            renderReactDom(State);
+        },
+        newPostText : ''
     },
     MessagesPage: {
         MessagesData: [
