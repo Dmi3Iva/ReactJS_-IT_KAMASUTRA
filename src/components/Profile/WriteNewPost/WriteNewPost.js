@@ -7,7 +7,7 @@ const WriteNewPost = (props) => {
 	return (
 		<div>
 			<textarea ref={newPostElement}/>
-			<button onClick={props.addPost}>Send new post</button>
+			<button onClick={()=>props.addPost(newPostElement)}>Send new post</button>
 		</div>
 	);
 }

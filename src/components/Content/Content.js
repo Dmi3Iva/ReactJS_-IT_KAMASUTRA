@@ -8,7 +8,7 @@ const Content = (props) =>{
 		<main className={styles.content}>
 			<img className={styles.content__wallpaper} src={backgroundImage} alt="background"/>
 			Main content
-			<Profile PostsData={props.PostsData} addPost={props.addPost}/>
+			<Profile PostsData={props} />
 		</main>
 	);
 }

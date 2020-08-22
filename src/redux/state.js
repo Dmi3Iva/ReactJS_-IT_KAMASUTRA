@@ -1,9 +1,21 @@
+import {renderReactDom} from '../render';
+
 let State = {
     profilePage : {
         PostsData: [
             {id: 1, message: "There's my first post!", likesCount: 10},
             {id: 2, message: "Welcome to my page!", likesCount: 20}
-        ]
+        ],
+        addPost : postMessage => {
+            let newPost = {
+                id: 10,
+                message: postMessage.current.value,
+                likesCount: 0
+            };
+            State.profilePage.PostsData.push(newPost);
+            postMessage.current.value = '';
+            renderReactDom(State);
+        }
     },
     MessagesPage: {
         MessagesData: [
@@ -19,15 +31,8 @@ let State = {
             {id: 5, name: "Olga"},
             {id: 6, name: "Kristy"}
         ]
-    }
+    },
+
 }
 
-export let addPost = postMessage => {
-    let newPost = {
-        id: 10,
-        message: postMessage,
-        likesCount: 0
-    };
-    State.profilePage.PostsData.push(newPost);
-}
 export default State;

@@ -12,7 +12,7 @@ const App = (props) => {
 		<div className={`${styles.App} ${styles.wrapper}`}>
 			<Header />
 			<Sidebar />
-		<Route exact path='/profile' render={ () => <Content PostsData={props.AppState.profilePage.PostsData} addPost={props.addPost}/>}/>
+		<Route exact path='/profile' render={ () => <Content PostsData={props.AppState.profilePage} />}/>
 			<Route exact path='/messages' render={()=><Dialogs MessagesData={props.AppState.MessagesPage}/>}/>
 		</div>
 	  </BrowserRouter>
