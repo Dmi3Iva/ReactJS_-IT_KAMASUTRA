@@ -4,15 +4,16 @@ import Store  from './redux/store.js';
 import ReactDOM from "react-dom";
 import React from "react";
 import App from "./App";
+import {BrowserRouter} from "react-router-dom";
 
 let renderDom = (State) =>{
     ReactDOM.render(
-        <React.StrictMode>
+        <BrowserRouter>
             <App
                 AppState = {State}
                 dispatch = {Store.dispatch.bind(Store)}
             />
-        </React.StrictMode>,
+        </BrowserRouter>,
         document.getElementById('root')
     );
 }
