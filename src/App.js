@@ -15,8 +15,7 @@ const App = (props) => {
 			<div className={styles.content}>
 				<Route exact path='/profile' render={ () => <Profile
 					PostsData={props.AppState.ProfilePage}
-					addPost={props.addPost}
-					updateNewPostText={props.updateNewPostText}
+                    dispatch={props.dispatch}
 				/>}/>
 				<Route exact path='/messages' render={ () => <Dialogs
 					MessagesData={props.AppState.MessagesPage}

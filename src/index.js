@@ -10,8 +10,7 @@ let renderDom = (State) =>{
         <React.StrictMode>
             <App
                 AppState = {State}
-                addPost = {Store.addPost.bind(Store)}
-                updateNewPostText = {Store.updateNewPostText.bind(Store)}
+                dispatch = {Store.dispatch.bind(Store)}
             />
         </React.StrictMode>,
         document.getElementById('root')

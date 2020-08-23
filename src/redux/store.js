@@ -5,7 +5,7 @@ let Store = {
                 {id: 1, message: "There's my first post!", likesCount: 10},
                 {id: 2, message: "Welcome to my page!", likesCount: 20}
             ],
-            _newPostText : ''
+            newPostText : ''
         },
         MessagesPage: {
             MessagesData: [
@@ -23,10 +23,10 @@ let Store = {
             ]
         },
     },
-    getState(){
-      return this._state;
+    _subscriber(){
+        console.log('empty render...');
     },
-    addPost() {
+    _addPost() {
         let lastId = 1;
         while (this._state.ProfilePage.PostsData[lastId - 1] !== undefined)
         {
@@ -37,26 +37,35 @@ let Store = {
             message: this.getNewPostText(),
             likesCount: 0
         });
-        this.setNewPostText('');
+        this._setNewPostText('');
         this._subscriber(Store._state);
     },
-    updateNewPostText(text) {
-        this.setNewPostText(text);
+    _updateNewPostText(text) {
+        this._setNewPostText(text);
         this._subscriber(Store._state);
+    },
+    _setNewPostText(text)
+    {
+        this._state.ProfilePage.newPostText = text;
+    },
+    getState(){
+        return this._state;
     },
     subscribe(observer) {
         this._subscriber = observer;
     },
-    _subscriber(){
-        console.log('empty render...');
-    },
-    setNewPostText(text)
-    {
-        this._state.ProfilePage._newPostText = text;
-    },
     getNewPostText() {
-        return this._state.ProfilePage._newPostText;
+        return this._state.ProfilePage.newPostText;
     },
+    dispatch(action){
+        if(action.type === 'ADD-POST') {
+            this._addPost();
+        }
+        else if(action.type === 'UPDATE-NEW-POST-TEXT')
+        {
+            this._updateNewPostText(action.postText);
+        }
+    }
 }
 
 window.Store = Store;

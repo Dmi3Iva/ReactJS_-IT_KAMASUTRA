@@ -10,7 +10,7 @@ function Profile(props){
 		<div className={styles.profile}>
 			<Avatar />
 			<Description />
-			<WriteNewPost addPost={props.addPost} updateNewPost={props.updateNewPostText} ProfilePage={props.PostsData}/>
+			<WriteNewPost dispatch={props.dispatch} newPostText={props.PostsData.newPostText}/>
 			<MyPosts PostsData={props.PostsData.PostsData} />
 		</div>
 	);
