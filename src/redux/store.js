@@ -1,26 +1,33 @@
 import {renderReactDom} from '../render';
 
-let State = {
+let Store = {
     profilePage : {
         PostsData: [
             {id: 1, message: "There's my first post!", likesCount: 10},
             {id: 2, message: "Welcome to my page!", likesCount: 20}
         ],
-        addPost : postMessage => {
+        addPost(){
             let newPost = {
                 id: 10,
-                message: State.profilePage.newPostText,
+                message: this.getNewPostText(),
                 likesCount: 0
             };
-            State.profilePage.PostsData.push(newPost);
-            State.profilePage.newPostText = '';
-            renderReactDom(State);
+            this.PostsData.push(newPost);
+            this.setNewPostText('');
+            renderReactDom(Store);
         },
-        updateNewPostText : newText => {
-            State.profilePage.newPostText = newText;
-            renderReactDom(State);
+        updateNewPostText (newText) {
+            this.setNewPostText(newText);
+            renderReactDom(Store);
         },
-        newPostText : ''
+        setNewPostText(text)
+        {
+            this._newPostText = text;
+        },
+        getNewPostText() {
+            return this._newPostText;
+        },
+        _newPostText : ''
     },
     MessagesPage: {
         MessagesData: [
@@ -37,7 +44,6 @@ let State = {
             {id: 6, name: "Kristy"}
         ]
     },
-
 }
 
-export default State;
+export default Store;

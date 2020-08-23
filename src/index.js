@@ -1,9 +1,9 @@
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import State  from './redux/state.js';
+import Store  from './redux/store.js';
 import {renderReactDom} from './render';
 
-renderReactDom(State);
+renderReactDom(Store);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
