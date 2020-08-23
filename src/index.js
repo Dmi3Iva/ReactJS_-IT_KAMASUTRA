@@ -1,9 +1,25 @@
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import Store  from './redux/store.js';
-import {renderReactDom} from './render';
+import ReactDOM from "react-dom";
+import React from "react";
+import App from "./App";
 
-renderReactDom(Store);
+Store.renderReactDom = (State) =>{
+    ReactDOM.render(
+        <React.StrictMode>
+            <App
+                AppState = {State}
+                addPost = {Store.addPost.bind(Store)}
+                updateNewPostText = {Store.updateNewPostText.bind(Store)}
+            />
+        </React.StrictMode>,
+        document.getElementById('root')
+    );
+}
+Store.renderReactDom(Store.getState());
+
+Store.subscribe(Store.renderReactDom);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
