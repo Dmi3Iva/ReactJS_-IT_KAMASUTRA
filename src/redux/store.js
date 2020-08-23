@@ -38,16 +38,16 @@ let Store = {
             likesCount: 0
         });
         this.setNewPostText('');
-        this.renderReactDom(Store._state);
+        this._subscriber(Store._state);
     },
     updateNewPostText(text) {
         this.setNewPostText(text);
-        this.renderReactDom(Store._state);
+        this._subscriber(Store._state);
     },
     subscribe(observer) {
-        this.renderReactDom = observer;
+        this._subscriber = observer;
     },
-    renderReactDom(){
+    _subscriber(){
         console.log('empty render...');
     },
     setNewPostText(text)

@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import React from "react";
 import App from "./App";
 
-Store.renderReactDom = (State) =>{
+let renderDom = (State) =>{
     ReactDOM.render(
         <React.StrictMode>
             <App
@@ -17,9 +17,10 @@ Store.renderReactDom = (State) =>{
         document.getElementById('root')
     );
 }
-Store.renderReactDom(Store.getState());
 
-Store.subscribe(Store.renderReactDom);
+renderDom(Store.getState());
+
+Store.subscribe(renderDom);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
