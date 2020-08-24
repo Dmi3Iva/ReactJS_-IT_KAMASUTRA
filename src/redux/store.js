@@ -40,9 +40,6 @@ let Store = {
     subscribe(observer) {
         this._subscriber = observer;
     },
-    getNewPostText() {
-        return this._state.ProfilePage.newPostText;
-    },
     dispatch(action){
         this._state.ProfilePage  = profileReducer(this._state.ProfilePage, action);
         this._state.MessagesPage =  dialogsReducer(this._state.MessagesPage, action);

@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from './components/Header/Header.js';
-import Sidebar from './components/Sidebar/Sidebar.js';
-import Dialogs from './components/Dialogs/Dialogs.js';
+import Header from './components/Header/Header.jsx';
+import Sidebar from './components/Sidebar/Sidebar.jsx';
+import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import styles from './App.module.css';
 import {Route} from 'react-router-dom';
-import Profile from "./components/Profile/Profile";
+import Profile from "./components/Profile/Profile.jsx";
 
 const App = (props) => {
   return (
@@ -14,12 +14,10 @@ const App = (props) => {
 			<Sidebar />
 			<div className={styles.content}>
 				<Route exact path='/profile' render={ () => <Profile
-					PostsData={props.AppState.ProfilePage}
-                    dispatch={props.dispatch}
+					Store={props.Store}
 				/>}/>
-				<Route exact path='/messages' render={ () => <Dialogs
-					MessagesData={props.AppState.MessagesPage}
-					dispatch={props.dispatch}
+				<Route exact path='/dialogs' render={ () => <DialogsContainer
+					Store={props.Store}
 				/>}/>
 			</div>
 		</div>

@@ -7,12 +7,11 @@ import React from "react";
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
 
-let renderDom = (State) =>{
+let renderDom = () =>{
     ReactDOM.render(
         <BrowserRouter>
             <App
-                AppState = {State}
-                dispatch = {Store.dispatch.bind(Store)}
+                Store = {Store}
             />
         </BrowserRouter>,
         document.getElementById('root')
