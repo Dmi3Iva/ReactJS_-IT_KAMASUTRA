@@ -13,12 +13,8 @@ const App = (props) => {
 			<Header />
 			<Sidebar />
 			<div className={styles.content}>
-				<Route exact path='/profile' render={ () => <Profile
-					Store={props.Store}
-				/>}/>
-				<Route exact path='/dialogs' render={ () => <DialogsContainer
-					Store={props.Store}
-				/>}/>
+				<Route exact path='/profile' render={ () => <Profile/>}/>
+				<Route exact path='/dialogs' render={ () => <DialogsContainer/>}/>
 			</div>
 		</div>
 	  </div>
