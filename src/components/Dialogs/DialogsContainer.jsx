@@ -3,45 +3,28 @@ import DialogItem from './DialogItem/DialogItem.jsx'
 import Message from './Message/Message.jsx'
 import {addMessageActionCreator, updateMessageTextActionCreator} from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
-import StoreContext from "../../StoreContext";
+import {connect} from "react-redux";
 
+let mapStateToProps = (state)=>{
+    return {
+        DialogItems: state.MessagesPage.ContactsData.map( x => <DialogItem name={x.name} key={x.id} /> ),
+        MessageItems: state.MessagesPage.MessagesData.map(x => <Message avatar={x.avatar} name={x.name} text={x.text} key={x.id} /> ),
+        newMessage: state.MessagesPage.newMessage
+    }
+};
 
-const DialogsContainer = (props) => {
-    return (
-        <StoreContext>
-            {
-                (Store)=>{
-                    let onSendMessageClick = ()=>
-                    {
-                        Store.dispatch(addMessageActionCreator());
-                    }
+let mapDispatchToProps = (dispatch)=>{
+    return {
+        sendMessage : () =>
+        {
+            dispatch(addMessageActionCreator());
+        },
+        changeMessage:(text)=> {
+            dispatch(updateMessageTextActionCreator(text));
+        }
+    }
+};
 
-                    let onChangeMessage = (text) =>{
-                        Store.dispatch(updateMessageTextActionCreator(text));
-                    }
-
-                    let DialogsItems =
-                        Store.getState().MessagesPage.ContactsData.map(
-                            x => <DialogItem name={x.name} key={x.id} />
-                        )
-                    ;
-                    let MessageItems =
-                        Store.getState().MessagesPage.MessagesData.map(
-                            x => <Message avatar={x.avatar} name={x.name} text={x.text} key={x.id} />
-                        )
-                    ;
-
-                    return <Dialogs
-                        DialogItems={DialogsItems} MessageItems={MessageItems}
-                        newMessage={Store.getState().MessagesPage.newMessage}
-                        sendMessage={onSendMessageClick}
-                        changeMessage={onChangeMessage}
-                    />
-                }
-
-            }
-        </StoreContext>
-    );
-}
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;

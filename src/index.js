@@ -1,27 +1,27 @@
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import Store from "./redux/redux-store";
+import store from "./redux/redux-store";
 import ReactDOM from "react-dom";
 import React from "react";
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
-import StoreContext from "./StoreContext";
+import {Provider} from "react-redux";
 
 let renderDom = () =>{
     ReactDOM.render(
         <BrowserRouter>
-            <StoreContext.Provider value={Store}>
+            <Provider store={store}>
                 <App/>
-            </StoreContext.Provider>
+            </Provider>
         </BrowserRouter>,
         document.getElementById('root')
     );
 }
 
-renderDom(Store.getState());
+renderDom(store.getState());
 
-Store.subscribe(()=> {
-    renderDom(Store.getState());
+store.subscribe(()=> {
+    renderDom(store.getState());
     }
 );
 
