@@ -19,26 +19,29 @@ let initialState = {
 };
 
 const dialogsReducer = (state = initialState, action) => {
-    let stateCopy = {...state};
     switch (action.type)
     {
         case ADD_MESSAGE:
             let lastId = 1;
             while( state.MessagesData[lastId] !== undefined)
                 ++lastId;
-            stateCopy.MessagesData.push({
-                id: lastId,
-                avatar: "ava",
-                name: "The GOD",
-                text: state.newMessage
-            });
-            stateCopy.newMessage = '';
-            return stateCopy;
+            return {
+                ...state,
+                MessagesData: [...state.MessagesData, {
+                    id: lastId,
+                    avatar: "ava",
+                    name: "The GOD",
+                    text: state.newMessage
+                }],
+                newMessage: ''
+            };
         case UPDATE_NEW_MESSAGE:
-            stateCopy.newMessage = action.message;
-            return stateCopy;
+            return {
+                ...state,
+                newMessage: action.message
+            };
         default:
-            return stateCopy;
+            return state;
     }
 }
 
