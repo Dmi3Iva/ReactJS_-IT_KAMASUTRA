@@ -6,12 +6,7 @@ let url= 'https://i.pinimg.com/originals/31/75/48/31754822b98a017c6fa76fdeadc994
 
 let initialState = {
     users:[
-        {id: 1, photoUrl: url, followed: false, fullName:'Dmitriy', status:'i am a boss', location: {city:'Minsk', country:'Belarus'}},
-        {id: 2, photoUrl: url,followed: true, fullName:'Sasha', status:'i am a boss too', location: {city:'Moscow', country:'Russia'}},
-        {id: 3, photoUrl: url,followed: false, fullName:'Dart Veider', status:'never go outside', location: {city:'Minsk', country:'Belarus'}},
-        {id: 4, photoUrl: url,followed: true, fullName:'Han Sollo', status:'kkkk', location: {city:'Minsk', country:'Belarus'}},
-        {id: 5,photoUrl: url, followed: false, fullName:'Leya', status:'Henlo', location: {city:'Minsk', country:'Belarus'}},
-        {id: 6,photoUrl: url, followed: true, fullName:'Obi Wan kenobi', status:'Hello', location: {city:'Minsk', country:'Belarus'}},
+
     ]
 };
 
@@ -47,7 +42,7 @@ const usersReducer = (state = initialState, action) => {
             )
         };
         case SET_USERS:{
-            return {...state, users: [...state.users, action.users]};
+            return {...state, users: [...state.users, ...action.users]};
         }
         default:
             return (state);
