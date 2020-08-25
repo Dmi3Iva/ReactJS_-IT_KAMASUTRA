@@ -10,6 +10,7 @@ function Sidebar() {
 				<li><NavLink className={styles.sidebar__item} activeClassName={styles.active} to="/dialogs">Messages</NavLink></li>
 				<li><NavLink className={styles.sidebar__item} activeClassName={styles.active} to="/news">News</NavLink></li>
 				<li><NavLink className={styles.sidebar__item} activeClassName={styles.active} to="/music">Music</NavLink></li>
+				<li><NavLink className={styles.sidebar__item} activeClassName={styles.active} to="/users">Find user</NavLink></li>
 				<li><NavLink className={styles.sidebar__item} activeClassName={styles.active} to="/settings">Settings</NavLink></li>
 			</ul>
 		</aside>
