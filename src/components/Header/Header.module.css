@@ -10,4 +10,11 @@
   max-height: 100%;
 }
 
+.login__block{
+  float:right;
+}
+
+.login__block a{
+  color:white;
+}
 
