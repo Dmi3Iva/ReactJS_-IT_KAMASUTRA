@@ -14,9 +14,16 @@ const App = (props) => {
 			<Header />
 			<Sidebar />
 			<div className={styles.content}>
-				<Route path='/profile' render={ () => <ProfileContainer/>}/>
-				<Route exact path='/dialogs' render={ () => <DialogsContainer/>}/>
-				<Route exact path='/users' render={ () => <UsersContainer/>}/>
+
+				<Route path='/profile/:userId?'
+					   render={ () => <ProfileContainer/>}/>
+
+				<Route exact path='/dialogs'
+					   render={ () => <DialogsContainer/>}/>
+
+				<Route exact path='/users'
+					   render={ () => <UsersContainer/>}/>
+
 			</div>
 		</div>
 	  </div>
