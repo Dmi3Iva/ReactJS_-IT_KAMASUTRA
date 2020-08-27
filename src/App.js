@@ -4,8 +4,8 @@ import Sidebar from './components/Sidebar/Sidebar.jsx';
 import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import styles from './App.module.css';
 import {Route} from 'react-router-dom';
-import Profile from "./components/Profile/Profile.jsx";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 const App = (props) => {
   return (
@@ -14,7 +14,7 @@ const App = (props) => {
 			<Header />
 			<Sidebar />
 			<div className={styles.content}>
-				<Route exact path='/profile' render={ () => <Profile/>}/>
+				<Route path='/profile' render={ () => <ProfileContainer/>}/>
 				<Route exact path='/dialogs' render={ () => <DialogsContainer/>}/>
 				<Route exact path='/users' render={ () => <UsersContainer/>}/>
 			</div>
