@@ -4,7 +4,6 @@ import styles from './Header.module.css';
 import {NavLink} from "react-router-dom";
 
 function Header(props){
-	debugger;
 	return (
 		<header className={styles.header}>
 			<img className={styles.header__logo} src={logo} alt="Logo"/>
