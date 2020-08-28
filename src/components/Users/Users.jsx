@@ -2,9 +2,7 @@ import React from 'react';
 import styles from "./users.module.css";
 import defaultUserPhoto from "../assets/freepik-avatar.jpg";
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
-import {unfollow} from "../../redux/users-reducer";
-import {followUser, unfollowUser, usersAPI} from "../../api/api";
+import {usersAPI} from "../../api/api";
 
 const Users = (props) => {
     return (
@@ -26,18 +24,20 @@ const Users = (props) => {
                         </div>
                         <div>
                             {x.followed ?
-                                <button onClick={() => {
+                                <button disabled={props.followingInProgress.some(id => id === x.id)} onClick={() => {
+                                    props.toggleFollowingInProgress(true, x.id);
                                     usersAPI.unfollowUser(x.id)
                                         .then(data => {
-                                            if (data.resultCode == 0)
+                                            if (data.resultCode === 0)
                                                 props.unfollow(x.id)
                                         })
                                 }}>Unfollow</button>
                                 :
-                                <button onClick={() => {
+                                <button disabled={props.followingInProgress.some(id => id === x.id)} onClick={() => {
+                                    props.toggleFollowingInProgress(true, x.id);
                                    usersAPI.followUser(x.id)
                                         .then(data => {
-                                            if (data.resultCode == 0)
+                                            if (data.resultCode === 0)
                                                 props.follow(x.id)
                                         });
                                 }}>Follow</button>
