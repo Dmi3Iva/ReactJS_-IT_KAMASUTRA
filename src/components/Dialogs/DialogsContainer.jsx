@@ -10,7 +10,8 @@ let mapStateToProps = (state) => {
         DialogItems: state.MessagesPage.ContactsData.map(x => <DialogItem name={x.name} key={x.id}/>),
         MessageItems: state.MessagesPage.MessagesData.map(x => <Message avatar={x.avatar} name={x.name} text={x.text}
                                                                         key={x.id}/>),
-        newMessage: state.MessagesPage.newMessage
+        newMessage: state.MessagesPage.newMessage,
+        isAuth: state.Auth.isAuth
     }
 };
 

@@ -9,6 +9,7 @@ import {
 import React from "react";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
+import {Redirect} from "react-router-dom";
 
 class UsersContainer extends React.Component {
 
@@ -21,6 +22,8 @@ class UsersContainer extends React.Component {
     };
 
     render() {
+
+        if(!this.props.isAuth) return <Redirect to={'/login'} />;
 
         let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
         let pages = [];
@@ -50,7 +53,8 @@ let mapStateToProps = (state) => {
         totalUsersCount: state.UsersPage.totalUsersCount,
         currentPage: state.UsersPage.currentPage,
         isFetching: state.UsersPage.isFetching,
-        followingInProgress: state.UsersPage.followingInProgress
+        followingInProgress: state.UsersPage.followingInProgress,
+        isAuth: state.Auth.isAuth
     }
 }
 

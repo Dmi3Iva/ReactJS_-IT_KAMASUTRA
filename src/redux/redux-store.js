@@ -9,7 +9,7 @@ let reducers = combineReducers({
     ProfilePage: profileReducer,
     MessagesPage: dialogsReducer,
     UsersPage: usersReducer,
-    auth: authReducer
+    Auth: authReducer
 });
 
 let store = createStore(reducers, applyMiddleware(thunkMiddleware));
