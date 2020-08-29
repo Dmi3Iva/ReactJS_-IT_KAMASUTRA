@@ -7,7 +7,6 @@ import WriteNewPostContainer from "./WriteNewPost/WriteNewPostContainer";
 import Preloader from "../Common/Preloader/Preloader";
 
 const  Profile = (props) => {
-	console.log(props);
 	if(!props.profile) {
 		return <Preloader />
 	}
