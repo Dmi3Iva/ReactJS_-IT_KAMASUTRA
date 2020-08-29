@@ -23,7 +23,7 @@ const authReducer = (state = initialState, action) => {
         }
     }
 }
-export const authUserData = () => (dispatch) => {
+export const authUserData =  () => (dispatch) => {
     authAPI.authMe()
         .then(data => {
             if(data.resultCode === 0)

@@ -5,14 +5,17 @@ import {connect} from "react-redux";
 export const withAuthRedirectComponent = (Component) => {
     class RedirectComponent extends React.Component {
         render() {
+            debugger;
             if (this.props.isAuth === false) return <Redirect to={'/login'}/>
             return <Component {...this.props}/>
         }
     }
 
-    return connect((state) => (
+    return connect((state) =>
         {
-            isAuth: state.Auth.isAuth
+            return {
+                isAuth: state.Auth.isAuth
+            }
         }
-    ))(RedirectComponent);
+    )(RedirectComponent);
 }
