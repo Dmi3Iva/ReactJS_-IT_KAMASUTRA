@@ -9,13 +9,11 @@ class ProfileContainer extends React.Component {
 
     componentDidMount() {
         let userId = this.props.match.params.userId;
+        debugger
         this.props.getUserProfile(userId ? userId : this.props.myId);
     }
 
     render() {
-        if (this.props.isAuth === false) {
-            return <Redirect to={'/login'}/>
-        }
         return (
             <Profile
                 {...this.props}

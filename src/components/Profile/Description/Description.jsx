@@ -2,25 +2,49 @@ import React from 'react';
 
 const Description = (props) => {
     return (<div>
-        <div className="fullName">{props.profile.fullName}</div>
-        <div className="aboutMe">
-            {!props.editMode &&
-            <div><span onDoubleClick={
-                ()=>{props.setEditMode(true)}
-            }>{props.profile.aboutMe}</span></div>
+        <div className="status" style={{fontFamily:'Roboto', color: 'tomato'}}>
+            {
+                !props.editMode &&
+                <div>
+                    <span
+                        onDoubleClick={() => {
+                            props.setEditMode(true)
+                        }}
+                    >
+                        {props.status}
+                    </span>
+                </div>
             }
 
             {
                 props.editMode &&
-                <input autoFocus={true} onBlur={()=>props.setEditMode(false)} value={props.profile.aboutMe} onChange={() => {
-            }}/>}
+                <input
+                    autoFocus={true}
+                    onBlur={() => props.setStatus(props.status)}
+                    value={props.status}
+                    onChange={(e) => {
+                        props.onChangeStatus(e.target.value)
+                    }}
+                />
+            }
         </div>
-        <div>{props.profile.lookingForAJob && props.profile.lookingForAJobDescription}</div>
+        <div className="fullName">{props.fullName}</div>
+        <div className="aboutMe">{props.aboutMe}</div>
+
         <div>
-            {(props.profile.contacts.length !== 0) && "Социальные сети"}
+            {props.lookingForAJob && props.lookingForAJobDescription}
         </div>
-        {(props.profile.contacts.length !== 0) && Object.values(props.profile.contacts).map(c => (
-            <div className="Contacts__item">{c}</div>))}
+        <div>
+            {(props.contacts.length !== 0) && "Социальные сети"}
+        </div>
+        {
+            (props.contacts.length !== 0) &&
+            Object.values(props.contacts).map(c =>
+                (
+                    <div className="Contacts__item">{c}</div>
+                )
+            )
+        }
     </div>);
 }
 

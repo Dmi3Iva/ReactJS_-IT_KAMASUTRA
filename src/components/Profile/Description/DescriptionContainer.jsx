@@ -1,21 +1,27 @@
 import React from 'react';
 import Description from "./Description";
+import {connect} from "react-redux";
+import {getStatus, updateStatus} from "../../../redux/profile-reducer";
 
 class DescriptionContainer extends React.Component{
     state={
-        editMode: false,
+        editMode: !this.props.status,
+        status: this.props.status
     }
+
 
     componentDidMount() {
-
+        this.props.getStatus(this.props.Auth.userId)
+        debugger;
     }
 
-    onChangeAboutMe(){
-
+    onChangeAboutMe =(status) =>{
+        this.setState({status})
     }
 
-    setAboutMe(){
-
+    setAboutMe = (status) =>{
+        this.props.updateStatus(status);
+        this.setEditMode(false);
     }
 
     setEditMode = (editModeState) =>
@@ -24,12 +30,13 @@ class DescriptionContainer extends React.Component{
     }
 
     render() {
+        debugger;
         return (
             <Description
-                {...this.props}
+                {...this.props.ProfilePage}
                 editMode={this.state.editMode}
-                onChangeAboutMe={this.onChangeAboutMe}
-                setAboutMe={this.setAboutMe}
+                onChangeStatus={this.onChangeAboutMe}
+                setStatus={this.setAboutMe}
                 setEditMode={this.setEditMode}
             />
         );
@@ -38,4 +45,9 @@ class DescriptionContainer extends React.Component{
 
 }
 
-export default DescriptionContainer;
+const mapStateToProps = (state)=>{
+    return {
+        ...state
+    }
+};
+export default connect(mapStateToProps, {getStatus, updateStatus})(DescriptionContainer);
