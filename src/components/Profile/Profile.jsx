@@ -14,7 +14,7 @@ const  Profile = (props) => {
 	return (
 		<div className={styles.profile}>
 			<Avatar photos={props.profile.photos}/>
-			<DescriptionContainer profile={props.profile}/>
+			<DescriptionContainer profile={props.profile} status={props.status}/>
 			<WriteNewPostContainer />
 			<MyPostsContainer />
 		</div>

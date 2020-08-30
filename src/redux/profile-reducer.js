@@ -39,7 +39,6 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: action.postText
             };
         case SET_USER_PROFILE: {
-            debugger;
             return {
                 ...state,
                 profile: action.profile
@@ -63,12 +62,10 @@ export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setUserStatus = (status) => ({type: SET_STATUS, status});
 
 export const getStatus = (userId) => (dispatch) => {
-    if (!userId) {
+    if (!userId)
         userId = 2;
-    }
     profileAPI.getStatus(userId)
         .then(data => {
-            debugger;
                 dispatch(setUserStatus(data));
             }
         )
@@ -86,15 +83,12 @@ export const updateStatus = (status) => (dispatch) => {
 }
 
 export const getUserProfile = (userId) => (dispatch) => {
-    if (!userId) {
+    if (!userId)
         userId = 2;
-    }
-
     profileAPI.getUserProfile(userId)
         .then(data => {
             dispatch(setUserProfile(data));
         });
-    debugger
 }
 
 export default profileReducer;

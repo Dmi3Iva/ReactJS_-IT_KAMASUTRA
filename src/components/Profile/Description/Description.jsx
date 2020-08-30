@@ -28,20 +28,20 @@ const Description = (props) => {
                 />
             }
         </div>
-        <div className="fullName">{props.fullName}</div>
-        <div className="aboutMe">{props.aboutMe}</div>
+        <div className="fullName">{props.profile.fullName}</div>
+        <div className="aboutMe">{props.profile.aboutMe}</div>
 
         <div>
-            {props.lookingForAJob && props.lookingForAJobDescription}
+            {props.profile.lookingForAJob && props.profile.lookingForAJobDescription}
         </div>
         <div>
-            {(props.contacts.length !== 0) && "Социальные сети"}
+            {(props.profile.contacts.length !== 0) && "Социальные сети"}
         </div>
         {
-            (props.contacts.length !== 0) &&
-            Object.values(props.contacts).map(c =>
+            (props.profile.contacts.length !== 0) &&
+            Object.values(props.profile.contacts).filter(c=>c).map(c =>
                 (
-                    <div className="Contacts__item">{c}</div>
+                    <div className="Contacts__item" key={c}>{c}</div>
                 )
             )
         }
