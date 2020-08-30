@@ -10,10 +10,21 @@ class DescriptionContainer extends React.Component{
     }
 
     componentDidMount() {
+        console.log(this.props.profile.userId)
+        console.log(this.props);
         this.props.getStatus(this.props.profile.userId)
         this.setState((state, props) =>({
             status: props.status
         }))
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.status !== this.props.status)
+        {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
     onChangeStatus =(status) =>{
@@ -31,6 +42,9 @@ class DescriptionContainer extends React.Component{
     }
 
     render() {
+        console.log("render");
+        console.log(this.state);
+        console.log(this.props.profile);
         return (
             <Description
                 profile={this.props.profile}
@@ -46,6 +60,8 @@ class DescriptionContainer extends React.Component{
 
 const mapStateToProps = (state)=>{
     return {
+        profile: state.ProfilePage.profile,
+        status: state.ProfilePage.status
     }
 };
 export default connect(mapStateToProps, {getStatus, updateStatus})(DescriptionContainer);

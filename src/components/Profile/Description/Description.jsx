@@ -2,7 +2,7 @@ import React from 'react';
 
 const Description = (props) => {
     return (<div>
-        <div className="status" style={{fontFamily:'Roboto', color: 'tomato'}}>
+        <div className="status" style={{fontFamily: 'Roboto', color: 'tomato'}}>
             {
                 !props.editMode &&
                 <div>
@@ -11,7 +11,7 @@ const Description = (props) => {
                             props.setEditMode(true)
                         }}
                     >
-                        {props.status}
+                        {props.status || "-----"}
                     </span>
                 </div>
             }
@@ -39,7 +39,7 @@ const Description = (props) => {
         </div>
         {
             (props.profile.contacts.length !== 0) &&
-            Object.values(props.profile.contacts).filter(c=>c).map(c =>
+            Object.values(props.profile.contacts).filter(c => c).map(c =>
                 (
                     <div className="Contacts__item" key={c}>{c}</div>
                 )
