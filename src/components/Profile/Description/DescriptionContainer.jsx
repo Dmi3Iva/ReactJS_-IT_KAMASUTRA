@@ -10,8 +10,6 @@ class DescriptionContainer extends React.Component{
     }
 
     componentDidMount() {
-        console.log(this.props.profile.userId)
-        console.log(this.props);
         this.props.getStatus(this.props.profile.userId)
         this.setState((state, props) =>({
             status: props.status
@@ -42,9 +40,6 @@ class DescriptionContainer extends React.Component{
     }
 
     render() {
-        console.log("render");
-        console.log(this.state);
-        console.log(this.props.profile);
         return (
             <Description
                 profile={this.props.profile}

@@ -4,10 +4,9 @@ import {connect} from "react-redux";
 
 let mapStateToProps = (state)=>{
     return {
-        newPostText : state.ProfilePage.newPostText
     }
 }
 
-const WriteNewPostContainer = connect(mapStateToProps, {updateNewPost, addPost})(WriteNewPost);
+const WriteNewPostContainer = connect(mapStateToProps, {addPost})(WriteNewPost);
 
 export default WriteNewPostContainer;

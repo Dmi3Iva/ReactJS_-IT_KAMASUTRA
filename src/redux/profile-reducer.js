@@ -18,6 +18,7 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
+            debugger;
             let lastId = 1;
             while (state.PostsData[lastId - 1] !== undefined)
                 ++lastId;
@@ -27,7 +28,7 @@ const profileReducer = (state = initialState, action) => {
                 PostsData: [...state.PostsData,
                     {
                         id: lastId,
-                        message: state.newPostText,
+                        message: action.newPostText,
                         likesCount: 0
                     }
                 ],
@@ -56,7 +57,7 @@ const profileReducer = (state = initialState, action) => {
 
     }
 }
-export const addPost = () => ({type: ADD_POST});
+export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
 export const updateNewPost = (postText) => ({type: UPDATE_NEW_POST_TEXT, postText: postText});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setUserStatus = (status) => ({type: SET_STATUS, status});
