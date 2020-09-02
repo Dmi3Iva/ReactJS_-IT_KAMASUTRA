@@ -2,8 +2,6 @@ import React from 'react';
 import styles from './Dialogs.module.css';
 import {Redirect} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
-import handleSubmit from "redux-form/lib/handleSubmit";
-
 
 const Dialogs = (props) => {
 

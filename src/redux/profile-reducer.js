@@ -18,7 +18,6 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
-            debugger;
             let lastId = 1;
             while (state.PostsData[lastId - 1] !== undefined)
                 ++lastId;
