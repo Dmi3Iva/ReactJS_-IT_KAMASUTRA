@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './Dialogs.module.css';
 import {Redirect} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../Common/FormsControls/FormsControls";
+import {required} from "../../utils/validators/validators";
 
 const Dialogs = (props) => {
 
@@ -36,7 +38,7 @@ const DialogForm =(props)=>
 {
     return (
         <form onSubmit={props.handleSubmit} className="dialogs__new_message">
-            <Field name={"newMessageText"} component={"textarea"}/>
+            <Field name={"newMessageText"} component={Textarea} validate={required} />
             <button type={"submit"} >Send</button>
         </form>
     );
@@ -48,7 +50,6 @@ const DialogReduxForm = reduxForm({
 
 const DialogFormContainer = (props) => {
     const onSubmit =(formData)=>{
-        debugger
         props.sendMessage(formData.newMessageText);
     }
 

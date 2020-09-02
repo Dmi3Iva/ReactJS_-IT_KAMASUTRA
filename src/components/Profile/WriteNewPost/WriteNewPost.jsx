@@ -32,7 +32,6 @@ const WriteNewPostReduxForm = reduxForm({
 const WriteNewPost = (props) => {
 
     const onSubmit = (formData) => {
-        debugger;
         console.log(formData);
         props.addPost(formData.newPostText);
     }
