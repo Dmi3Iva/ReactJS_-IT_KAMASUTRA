@@ -9,7 +9,7 @@ function Header(props){
 			<img className={styles.header__logo} src={logo} alt="Logo"/>
 			<div className={styles.login__block}>
 				{props.isAuth ?
-					<div>{props.login}</div>
+					<div>{props.login} - <button onClick={props.logout}>Log out</button></div>
 					:<NavLink to={'/login'}>Login</NavLink>
 				}
 			</div>
