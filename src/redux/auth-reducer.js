@@ -25,14 +25,14 @@ const authReducer = (state = initialState, action) => {
     }
 }
 export const authUserData = () => (dispatch) => {
-    authAPI.authMe()
+    return authAPI.authMe()
         .then(data => {
             if (data.resultCode === 0) {
                 let {id, login, email} = data.data;
                 dispatch(setAuthUserData(id, login, email, true));
             } else {
                 let message = data.messages.length > 0 ? data.messages[0] : "some error";
-                dispatch ( stopSubmit('login', {
+                dispatch(stopSubmit('login', {
                     _error: message
                 }))
             }
@@ -40,13 +40,13 @@ export const authUserData = () => (dispatch) => {
 }
 
 export const login = (email, pass, rememberMe) => (dispatch) => {
-    authAPI.login(email, pass, rememberMe)
+    return authAPI.login(email, pass, rememberMe)
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(authUserData());
             } else {
                 let message = response.data.messages.length > 0 ? response.data.messages[0] : "some error";
-                dispatch ( stopSubmit('login', {
+                dispatch(stopSubmit('login', {
                     _error: message
                 }))
             }
@@ -54,7 +54,7 @@ export const login = (email, pass, rememberMe) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
-    authAPI.logout()
+    return authAPI.logout()
         .then(response => {
             if (response.data.resultCode === 0) {
                 dispatch(setAuthUserData(null, null, null, false));
