@@ -8,10 +8,10 @@ const DescriptionContainerWithHooks = (props) => {
     let [editMode, setStateEditMode] = useState(false);
     let [status, setStatus] = useState(props.status);
 
-    // useEffect(()=>{
-    //     setStatus(props.status);
-    //     props.getStatus(props.profile.userId)
-    // });
+    useEffect(()=>{
+        props.getStatus(props.profile.userId)
+        setStatus(props.status);
+    }, [props.status]);
 
     const onChangeStatus =(status) =>{
         setStatus(status)
