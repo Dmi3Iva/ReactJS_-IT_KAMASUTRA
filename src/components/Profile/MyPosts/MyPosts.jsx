@@ -7,6 +7,6 @@ const MyPosts = props => {
 			{props.Posts}
 		</div>
 	);
-}
+};
 
 export default MyPosts;
