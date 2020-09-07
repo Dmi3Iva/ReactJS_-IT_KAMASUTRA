@@ -4,6 +4,7 @@ const ADD_POST = 'ADD_POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
+const REMOVE_POST = 'REMOVE_POST';
 
 let initialState = {
     PostsData: [
@@ -50,6 +51,11 @@ const profileReducer = (state = initialState, action) => {
                 status: action.status
             }
         }
+        case REMOVE_POST: {
+            return {
+                ...state, PostsData: state.PostsData.filter(x=> x.id !== action.postId)
+            }
+        }
 
         default:
             return (state);
@@ -57,6 +63,7 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 export const addPost = (newPostText) => ({type: ADD_POST, newPostText});
+export const removePost = (postId) => ({type: REMOVE_POST, postId});
 export const updateNewPost = (postText) => ({type: UPDATE_NEW_POST_TEXT, postText: postText});
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 export const setUserStatus = (status) => ({type: SET_STATUS, status});
