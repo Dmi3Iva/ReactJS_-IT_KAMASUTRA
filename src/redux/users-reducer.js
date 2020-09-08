@@ -1,5 +1,7 @@
 import {usersAPI} from "../api/api";
+import {updateObjectInArray} from "../utils/object-helpers";
 
+//TODO: add prefixs files for conts
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
@@ -7,7 +9,6 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
-const FAKE = 'FAKE';
 
 let initialState = {
     users: [],
@@ -21,36 +22,16 @@ let initialState = {
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FAKE:
-            return {...state, fake: ++state.fake}
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(
-                    (x) => {
-                        if (x.id === action.userId)
-                            return {
-                                ...x,
-                                followed: true
-                            }
-                        return x;
-                    }
-                ),
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: true}),
                 followingInProgress: state.followingInProgress.filter(id => id !== action.userId)
             };
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(
-                    (x) => {
-                        if (x.id === action.userId)
-                            return {
-                                ...x,
-                                followed: false
-                            }
-                        return x;
-                    }
-                ),
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: false}),
                 followingInProgress: state.followingInProgress.filter(id => id !== action.userId)
             };
         case SET_USERS: {
@@ -94,41 +75,40 @@ export const toggleFollowingInProgress = (isFetching, userId) => ({
     userId
 });
 
+const followUnfollowFlow = async (dispatch, id, apiMethod, actionCreator) => {
+    dispatch(toggleFollowingInProgress(true, id));
+    let data = await apiMethod(id);
+
+    if (data.resultCode === 0)
+        dispatch(actionCreator(id));
+}
+
 export const unfollow = (id) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingInProgress(true, id));
-        usersAPI.unfollowUser(id)
-            .then(data => {
-                if (data.resultCode === 0)
-                    dispatch(unfollowSuccess(id));
-            })
+    return async (dispatch) => {
+        let apiMethod = usersAPI.unfollowUser.bind(usersAPI);
+
+        await followUnfollowFlow(dispatch, id, apiMethod, unfollowSuccess);
     }
 }
 
 export const follow = (id) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingInProgress(true, id));
-        usersAPI.followUser(id)
-            .then(data => {
-                if (data.resultCode === 0)
-                    dispatch(followSuccess(id));
-            });
+    return async (dispatch) => {
+        let apiMethod = usersAPI.followUser.bind(usersAPI);
+
+        await followUnfollowFlow(dispatch, id, apiMethod, followSuccess);
     }
 }
 
 export const requestUsers = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize)
-            .then(data => {
-                dispatch(toggleIsFetching(false));
-                dispatch(setUsers(data.items));
-                dispatch(setCurrentPage(currentPage));
-                dispatch(setTotalUsersCount(data.totalCount));
-            });
+        let data = await usersAPI.getUsers(currentPage, pageSize)
+
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setCurrentPage(currentPage));
+        dispatch(setTotalUsersCount(data.totalCount));
     }
 }
-
-export const fake = () => ({type: FAKE});
 
 export default usersReducer;

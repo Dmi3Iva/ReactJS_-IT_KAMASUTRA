@@ -2,13 +2,13 @@ import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 
 let store = {
-    _state : {
-        ProfilePage : {
+    _state: {
+        ProfilePage: {
             PostsData: [
                 {id: 1, message: "There's my first post!", likesCount: 10},
                 {id: 2, message: "Welcome to my page!", likesCount: 20}
             ],
-            newPostText : ''
+            newPostText: ''
         },
         MessagesPage: {
             MessagesData: [
@@ -24,28 +24,28 @@ let store = {
                 {id: 5, name: "Olga"},
                 {id: 6, name: "Kristy"}
             ],
-            newMessage : ''
+            newMessage: ''
         },
-        sidebar:{}
+        sidebar: {}
     },
-    _subscriber(){
+    _subscriber() {
         console.log('empty render...');
     },
     _setNewMessage(text) {
         this._state.MessagesPage.newMessage = text;
     },
-    getState(){
+    getState() {
         return this._state;
     },
     subscribe(observer) {
         this._subscriber = observer;
     },
-    dispatch(action){
-        this._state.ProfilePage  = profileReducer(this._state.ProfilePage, action);
-        this._state.MessagesPage =  dialogsReducer(this._state.MessagesPage, action);
+    dispatch(action) {
+        this._state.ProfilePage = profileReducer(this._state.ProfilePage, action);
+        this._state.MessagesPage = dialogsReducer(this._state.MessagesPage, action);
 
         this._subscriber(this.getState());
-    },
+    }
 }
 
 

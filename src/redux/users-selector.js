@@ -1,4 +1,4 @@
-import {createSelector}  from 'reselect';
+import {createSelector} from 'reselect';
 
 const getUsersSelector = (state) => {
     return state.UsersPage.users;
@@ -6,8 +6,8 @@ const getUsersSelector = (state) => {
 
 export const getUsers = createSelector(
     getUsersSelector,
-    (users) =>{
-        return users.filter((u)=>true);
+    (users) => {
+        return users.filter((u) => true);
     }
 )
 
