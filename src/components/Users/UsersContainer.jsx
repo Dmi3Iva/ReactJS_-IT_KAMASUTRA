@@ -34,16 +34,11 @@ class UsersContainer extends React.Component {
 
         if (!this.props.isAuth) return <Redirect to={'/login'}/>;
 
-        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
-        let pages = [];
-        for (let i = 1; i <= pagesCount && i < 8; ++i) {
-            pages.push(i);
-        }
-
         return (<>
                 {this.props.isFetching ? <Preloader/> : null}
                 <Users
-                    pages={pages}
+                    totalUsersCount={this.props.totalUsersCount}
+                    pageSize={this.props.pageSize}
                     users={this.props.users}
                     currentPage={this.props.currentPage}
                     onPageChanged={this.onPageChanged}
