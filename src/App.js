@@ -1,10 +1,8 @@
 import React from 'react';
 import Sidebar from './components/Sidebar/Sidebar.jsx';
-import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import styles from './App.module.css';
 import {BrowserRouter, Route, withRouter} from 'react-router-dom';
 import UsersContainer from "./components/Users/UsersContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import {connect, Provider} from "react-redux";
@@ -12,6 +10,10 @@ import {compose} from "redux";
 import {initializeApp} from "./redux/app-reducer";
 import Preloader from "./components/Common/Preloader/Preloader";
 import store from "./redux/redux-store";
+import WithSuspense from "./hoc/withSuspense";
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 
 class App extends React.Component {
 
@@ -20,7 +22,7 @@ class App extends React.Component {
     }
 
     render() {
-        if(!this.props.initialized) {
+        if (!this.props.initialized) {
             return <Preloader/>;
         }
 
@@ -32,16 +34,20 @@ class App extends React.Component {
                     <div className={styles.content}>
 
                         <Route path='/profile/:userId?'
-                               render={() => <ProfileContainer/>}/>
+                               render={WithSuspense(ProfileContainer)}
+                        />
 
                         <Route exact path='/dialogs'
-                               render={() => <DialogsContainer/>}/>
+                               render={WithSuspense(DialogsContainer)}
+                        />
 
                         <Route exact path='/users'
-                               render={() => <UsersContainer/>}/>
+                               render={WithSuspense(UsersContainer)}
+                        />
 
                         <Route exact path='/login'
-                               render={() => <Login/>}/>
+                               render={WithSuspense(Login)}
+                        />
 
                     </div>
                 </div>
@@ -64,7 +70,7 @@ const SamuraiJSApp = (props) => {
     return (
         <BrowserRouter>
             <Provider store={store}>
-                <AppContainer />
+                <AppContainer/>
             </Provider>
         </BrowserRouter>
     );
