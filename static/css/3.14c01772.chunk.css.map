@@ -1,0 +1,1 @@
+{"version":3,"sources":["Post.css"],"names":[],"mappings":"AAAA,MACE,4BACF","file":"3.14c01772.chunk.css","sourcesContent":[".post{\n  background-color: var(--blue);\n}\n"]}
