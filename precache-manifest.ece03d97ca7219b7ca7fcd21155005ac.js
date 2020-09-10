@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d51d7c339dd8f4e018e544069e017d9b",
+    "revision": "74bdc3dd76d6aa9daa602beb4694d659",
     "url": "/ReactJS_IT_KAMASUTRA/index.html"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ReactJS_IT_KAMASUTRA/static/css/4.00a3c6cd.chunk.css"
   },
   {
-    "revision": "a6eea618ee537cda2360",
+    "revision": "6376058e39b9444b0ea9",
     "url": "/ReactJS_IT_KAMASUTRA/static/css/main.7e0a16e9.chunk.css"
   },
   {
@@ -32,8 +32,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ReactJS_IT_KAMASUTRA/static/js/4.61eb21fb.chunk.js"
   },
   {
-    "revision": "a6eea618ee537cda2360",
-    "url": "/ReactJS_IT_KAMASUTRA/static/js/main.5dc2a6c0.chunk.js"
+    "revision": "6376058e39b9444b0ea9",
+    "url": "/ReactJS_IT_KAMASUTRA/static/js/main.4c96c003.chunk.js"
   },
   {
     "revision": "035d2d7efa2abfecf63a",

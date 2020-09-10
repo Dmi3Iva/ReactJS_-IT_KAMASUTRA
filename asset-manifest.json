@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ReactJS_IT_KAMASUTRA/static/css/main.7e0a16e9.chunk.css",
-    "main.js": "/ReactJS_IT_KAMASUTRA/static/js/main.5dc2a6c0.chunk.js",
-    "main.js.map": "/ReactJS_IT_KAMASUTRA/static/js/main.5dc2a6c0.chunk.js.map",
+    "main.js": "/ReactJS_IT_KAMASUTRA/static/js/main.4c96c003.chunk.js",
+    "main.js.map": "/ReactJS_IT_KAMASUTRA/static/js/main.4c96c003.chunk.js.map",
     "runtime-main.js": "/ReactJS_IT_KAMASUTRA/static/js/runtime-main.63402794.js",
     "runtime-main.js.map": "/ReactJS_IT_KAMASUTRA/static/js/runtime-main.63402794.js.map",
     "static/js/2.5d3c4db3.chunk.js": "/ReactJS_IT_KAMASUTRA/static/js/2.5d3c4db3.chunk.js",
@@ -14,7 +14,7 @@
     "static/js/4.61eb21fb.chunk.js": "/ReactJS_IT_KAMASUTRA/static/js/4.61eb21fb.chunk.js",
     "static/js/4.61eb21fb.chunk.js.map": "/ReactJS_IT_KAMASUTRA/static/js/4.61eb21fb.chunk.js.map",
     "index.html": "/ReactJS_IT_KAMASUTRA/index.html",
-    "precache-manifest.e2cd2db226f7b95b4fd7462e2c0211b8.js": "/ReactJS_IT_KAMASUTRA/precache-manifest.e2cd2db226f7b95b4fd7462e2c0211b8.js",
+    "precache-manifest.ece03d97ca7219b7ca7fcd21155005ac.js": "/ReactJS_IT_KAMASUTRA/precache-manifest.ece03d97ca7219b7ca7fcd21155005ac.js",
     "service-worker.js": "/ReactJS_IT_KAMASUTRA/service-worker.js",
     "static/css/3.14c01772.chunk.css.map": "/ReactJS_IT_KAMASUTRA/static/css/3.14c01772.chunk.css.map",
     "static/css/4.00a3c6cd.chunk.css.map": "/ReactJS_IT_KAMASUTRA/static/css/4.00a3c6cd.chunk.css.map",
@@ -28,6 +28,6 @@
     "static/js/runtime-main.63402794.js",
     "static/js/2.5d3c4db3.chunk.js",
     "static/css/main.7e0a16e9.chunk.css",
-    "static/js/main.5dc2a6c0.chunk.js"
+    "static/js/main.4c96c003.chunk.js"
   ]
 }
