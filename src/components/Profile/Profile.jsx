@@ -13,7 +13,7 @@ const  Profile = (props) => {
 
 	return (
 		<div className={styles.profile}>
-			<Avatar photos={props.profile.photos}/>
+			<Avatar photos={props.profile.photos} isOwner={props.isOwner}/>
 			<DescriptionContainer profile={props.profile} status={props.status}/>
 			<WriteNewPostContainer />
 			<MyPostsContainer />

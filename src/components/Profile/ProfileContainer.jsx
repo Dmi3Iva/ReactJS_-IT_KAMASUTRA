@@ -7,14 +7,25 @@ import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
 
-    componentDidMount() {
-        let userId = this.props.match.params.userId;
+    getUserProfileById(userId)
+    {
         this.props.getUserProfile(userId ? userId : this.props.myId);
+        this.props.getStatus(userId ? userId : this.props.myId);
+    }
+
+    componentDidMount() {
+        this.getUserProfileById(this.props.match.params.userId);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.match.params.userId !== this.props.match.params.userId)
+            this.getUserProfileById(this.props.match.params.userId);
     }
 
     render() {
         return (
             <Profile
+                isOwner={!!this.props.myId}
                 {...this.props}
             />
         );

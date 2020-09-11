@@ -41,7 +41,7 @@ export const authAPI = {
                 return response.data;
             });
     },
-    login: (email, password, rememberMe  = false) => {
+    login: (email, password, rememberMe = false) => {
         return instance.post('auth/login', {email, password, rememberMe});
     },
     logout: () => {
@@ -64,7 +64,15 @@ export const profileAPI = {
     updateStatus: (status) => {
         return instance.put('profile/status/', {status})
             .then(response => response.data);
+    },
+    updateProfilePhoto: (photoFile) => {
+        const formData = new FormData();
+        formData.append("image", photoFile)
+
+        return instance.put('profile/photo', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
     }
-
-
 }
