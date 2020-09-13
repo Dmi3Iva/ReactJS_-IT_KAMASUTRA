@@ -7,12 +7,13 @@ import {createSimpleField, Input, Textarea} from "../../../Common/FormsControls/
 import {required} from "../../../../utils/validators/validators";
 
 const ProfileDataForm = (props) => {
+    const {error} = props;
     return <div>
         <form onSubmit={props.handleSubmit}>
             {createSimpleField('Full name', 'fullName', [required], Input)}
             {createSimpleField('About me', 'aboutMe', [required], Textarea)}
             {createSimpleField('looking for a job', 'lookingForAJob', [], Input, 'checkbox', 'Looking for a job')}
-            {createSimpleField('looking for a job', 'lookingForAJobDescription', [required], Textarea,'Looking a job description')}
+            {createSimpleField('looking for a job', 'lookingForAJobDescription', [required], Textarea, 'Looking a job description')}
 
 
             <         div>
@@ -28,32 +29,34 @@ const ProfileDataForm = (props) => {
                                     {c}
                                 </dt>
                                 <dd key={c + 'Prop'}>
-                                    {createSimpleField(c, 'contacts.' + c, [],Input)}
+                                    {createSimpleField(c, 'contacts.' + c, [], Input)}
                                 </dd>
                             </>
                         )
                     )
                 }
             </dl>
+            {error && <div style={{border: "1px solid red"}}>
+                {error}
+            </div>}
             <button type="submit">Save new Data</button>
         </form>
     </div>;
 }
 
-const ProfileDataReduxForm = reduxForm({form:'profile'})(ProfileDataForm)
+const ProfileDataReduxForm = reduxForm({form: 'profile'})(ProfileDataForm)
 
 const ProfileDataFormContainer = (props) => {
     const onSubmit = (values) => {
         debugger;
-        props.updateProfile(values);
-        props.turnOffEditMode();
-        props.getUserProfile(props.profile.userId);
-
+        //TODO: architecture error, rewrite
+        props.updateProfile(values).then(()=>{
+            props.turnOffEditMode();
+            props.getUserProfile(props.profile.userId);
+        })
     }
     return <ProfileDataReduxForm {...props} onSubmit={onSubmit}/>;
 }
-
-
 
 
 const mapStateToProps = (state) => ({

@@ -120,12 +120,14 @@ export const getUserProfile = (userId) => async (dispatch) => {
 export const updateProfile = (profile) => async (dispatch) => {
     let response = await usersAPI.updateProfile(profile);
 
-    if (response.data.resultCode === 0)
+    if (response.data.resultCode === 0) {
         dispatch(updateProfileSuccess);
+    }
     else
     {
         let message = response.data.messages.length > 0 ? response.data.messages[0] : "unknown error";
         dispatch(stopSubmit("profile", {_error: message}))
+        return Promise.reject(message);
     }
 }
 
