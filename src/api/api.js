@@ -32,8 +32,6 @@ export const usersAPI = {
             })
     },
     updateProfile: (profile) => {
-        window.profile = profile;
-        debugger;
         return instance.put('profile', profile)
     }
 }

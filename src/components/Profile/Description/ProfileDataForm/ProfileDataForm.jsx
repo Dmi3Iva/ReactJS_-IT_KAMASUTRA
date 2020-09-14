@@ -48,7 +48,6 @@ const ProfileDataReduxForm = reduxForm({form: 'profile'})(ProfileDataForm)
 
 const ProfileDataFormContainer = (props) => {
     const onSubmit = (values) => {
-        debugger;
         //TODO: architecture error, rewrite
         props.updateProfile(values).then(()=>{
             props.turnOffEditMode();
