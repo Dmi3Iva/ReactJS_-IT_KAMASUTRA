@@ -1,5 +1,4 @@
 import * as axios from "axios";
-import deleteIn from "redux-form/lib/structure/plain/deleteIn";
 
 const BASE_URL = 'https://social-network.samuraijs.com/api/1.0/';
 const API_KEY = '53d3dc64-a25c-445e-81a3-2b2dcf8f14a9';
@@ -46,8 +45,8 @@ export const authAPI = {
                 return response.data;
             });
     },
-    login: (email, password, rememberMe = false) => {
-        return instance.post('auth/login', {email, password, rememberMe});
+    login: (email, password, rememberMe = false, captcha = null) => {
+        return instance.post('auth/login', {email, password, rememberMe, captcha});
     },
     logout: () => {
         return instance.delete('auth/login');
@@ -79,5 +78,11 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    }
+}
+
+export const securityAPI = {
+    getCaptchaUrl : () => {
+        return instance.get('security/get-captcha-url');
     }
 }
