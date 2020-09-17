@@ -1,43 +1,43 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "102f2d7cf3c41a626bc0849aa64e47fd",
+    "revision": "51ae04c2c6ca8b64ebc3ca5b0b14c897",
     "url": "/ReactJS_IT_KAMASUTRA/index.html"
   },
   {
-    "revision": "c164485dda034d0b4aa6",
+    "revision": "290eb9846d945ac822b7",
     "url": "/ReactJS_IT_KAMASUTRA/static/css/3.45ed0382.chunk.css"
   },
   {
-    "revision": "ba983320a276c87ab083",
+    "revision": "bd986c04bff914ffc122",
     "url": "/ReactJS_IT_KAMASUTRA/static/css/4.00a3c6cd.chunk.css"
   },
   {
-    "revision": "e10744795d3becffc334",
+    "revision": "b1ef8a1292b484255b92",
     "url": "/ReactJS_IT_KAMASUTRA/static/css/main.7e0a16e9.chunk.css"
   },
   {
-    "revision": "36bdfbebb598cdb6e7ed",
-    "url": "/ReactJS_IT_KAMASUTRA/static/js/2.79e29f1a.chunk.js"
+    "revision": "236f1069754ffd49890e",
+    "url": "/ReactJS_IT_KAMASUTRA/static/js/2.c2a87a1b.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/ReactJS_IT_KAMASUTRA/static/js/2.79e29f1a.chunk.js.LICENSE.txt"
+    "url": "/ReactJS_IT_KAMASUTRA/static/js/2.c2a87a1b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c164485dda034d0b4aa6",
-    "url": "/ReactJS_IT_KAMASUTRA/static/js/3.b71c39f4.chunk.js"
+    "revision": "290eb9846d945ac822b7",
+    "url": "/ReactJS_IT_KAMASUTRA/static/js/3.c805c583.chunk.js"
   },
   {
-    "revision": "ba983320a276c87ab083",
-    "url": "/ReactJS_IT_KAMASUTRA/static/js/4.98855cbe.chunk.js"
+    "revision": "bd986c04bff914ffc122",
+    "url": "/ReactJS_IT_KAMASUTRA/static/js/4.334dc1ca.chunk.js"
   },
   {
-    "revision": "e10744795d3becffc334",
-    "url": "/ReactJS_IT_KAMASUTRA/static/js/main.da1c6826.chunk.js"
+    "revision": "b1ef8a1292b484255b92",
+    "url": "/ReactJS_IT_KAMASUTRA/static/js/main.08683ae9.chunk.js"
   },
   {
-    "revision": "ba62bf6ab1fb184e6b51",
-    "url": "/ReactJS_IT_KAMASUTRA/static/js/runtime-main.380bd4d5.js"
+    "revision": "518e693ca059d578e85e",
+    "url": "/ReactJS_IT_KAMASUTRA/static/js/runtime-main.ea3d855d.js"
   },
   {
     "revision": "5b01963740db5315e5578dabe49cce54",
