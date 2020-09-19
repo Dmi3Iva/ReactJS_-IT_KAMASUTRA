@@ -2,11 +2,12 @@ import React from 'react';
 import Profile from "./Profile";
 import {connect} from "react-redux";
 import {getStatus, getUserProfile} from "../../redux/profile-reducer";
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthRedirectComponent} from "../../hoc/withAuthRedirect";
 
 class ProfileContainer extends React.Component {
+
 
     getUserProfileById(userId)
     {
@@ -24,6 +25,9 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
+        if(!this.props.myId  && !this.props.match.params.userId)
+            return <Redirect to={'/login'}/>;
+
         return (
             <Profile
                 isOwner={!!this.props.myId}
@@ -42,6 +46,5 @@ let mapStateToProps = (state) => ({
 
 export default compose(
     connect(mapStateToProps, {getUserProfile, getStatus}),
-    withAuthRedirectComponent,
     withRouter
 )(ProfileContainer);

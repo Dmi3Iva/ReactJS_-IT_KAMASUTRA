@@ -4,8 +4,14 @@
   --citrine: #e0ca3cff;
   --green: #048a81ff;
   --pink: #e0acd5ff;
+    /*new colors */
+  --prussian-blue: #0b3954ff;
+  --metallic-seaweed: #087e8bff;
+  --white: #ffffffff;
+  --emerald: #2dd881ff;
+  --taupe-gray: #8f8389ff;
 }
-
+/*
 .wrapper
 {
   display: grid;
@@ -38,3 +44,4 @@
   object-fit: cover;
   margin-bottom: 20px;
 }
+*/

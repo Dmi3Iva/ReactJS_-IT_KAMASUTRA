@@ -2,14 +2,14 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import ReactDOM from "react-dom";
 import React from "react";
-import SamuraiJSApp from "./App";
+import AppInit from "./AppInit";
 
 // setInterval(()=>{
 //     store.dispatch({type: 'FAKE'});
 // }, 1000)
 
 ReactDOM.render(
-    <SamuraiJSApp/>,
+    <AppInit/>,
     document.getElementById('root')
 );
 

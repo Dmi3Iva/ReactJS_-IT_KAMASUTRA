@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import style from "./login.module.css";
+import Button from "@material-ui/core/Button";
 
 
 const LoginForm = ({handleSubmit, error,  captchaUrl}) => {
@@ -25,7 +26,7 @@ const LoginForm = ({handleSubmit, error,  captchaUrl}) => {
                     {createSimpleField('captcha', 'captcha', required, Input)}
                 </>}
                 <div>
-                    <button>login</button>
+                    <Button color="primary" variant="contained" type="submit">Login</Button>
                 </div>
             </form>
         </div>
