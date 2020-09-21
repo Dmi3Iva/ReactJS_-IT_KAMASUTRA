@@ -7,13 +7,15 @@ const styles = theme => ({
 	root: {
 		position: 'fixed',
 		bottom: 0,
-		left: '50%',
-		marginLeft: -240,
 		backgroundColor: theme.palette.primary.main,
 		padding: 20,
-		maxWidth: 480,
 		width: '100%',
-		boxShadow: '0 -5px 30px rgba(0, 0, 0, 0.5)'
+		boxShadow: '0 -5px 30px rgba(0, 0, 0, 0.5)',
+		[theme.breakpoints.up('sm')]: {
+			left: '50%',
+			marginLeft: -300,
+			maxWidth: 600,
+		}
 	},
 	menu: {
 		listStyle: 'none',

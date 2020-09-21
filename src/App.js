@@ -16,11 +16,14 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 
 const styles = theme => ({
     root: {
-        maxWidth: 480,
+        maxWidth: 600,
         margin: '0 auto',
         paddingBottom: 100,
         background: '#fff',
         minHeight: '100vh'
+    },
+    main: {
+        padding: "0 15px"
     }
 });
 
@@ -48,7 +51,7 @@ class App extends React.Component {
         return (
                 <div className={classes.root}>
                     <HeaderContainer/>
-                    <div>
+                    <div className={classes.main}>
                         <Switch>
                             <Route path='/profile/:userId?'
                                    render={WithSuspense(ProfileContainer)}
