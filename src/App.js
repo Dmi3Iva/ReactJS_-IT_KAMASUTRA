@@ -65,8 +65,21 @@ class App extends React.Component {
                                    render={WithSuspense(DialogsContainer)}
                             />
 
+                            <Route exact path='/news'
+                                   render={()=>{
+                                       return <div>The page is being created</div>;
+                                   }}
+                            />
+
                             <Route exact path='/users'
                                    render={WithSuspense(UsersContainer)}
+                            />
+
+
+                            <Route exact path='/settings'
+                                   render={()=>{
+                                       return <div>The page is being created</div>;
+                                   }}
                             />
 
                             <Route exact path='/login'
