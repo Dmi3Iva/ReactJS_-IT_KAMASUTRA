@@ -4,24 +4,41 @@ import {createMuiTheme, CssBaseline, MuiThemeProvider} from "@material-ui/core";
 import React from "react";
 import App from "./App";
 import {HashRouter} from "react-router-dom";
+import {withStyles} from "@material-ui/core/styles/withStyles";
 
 const theme = createMuiTheme({
-    palette: {
-        primary: {
-            main:'#05668D',
+        overrides: {
+            MuiCssBaseline:{
+                '@global':{
+                    body:{
+                        minHeight: '100%'
+                    },
+                    '#root': {
+                        minHeight: '100%'
+                    }
+                }
+            }
         },
-        secondary: {
-            main: '#0A1128'
+        palette: {
+            primary: {
+                main: '#05668D',
+            },
+            secondary: {
+                main: '#0A1128'
+            },
+            background: {
+                default: '#d6d6d6'
+            },
         }
-    }
-});
+    })
+;
 
 const AppInit = (props) => {
     return (
         <HashRouter>
             <Provider store={store}>
-                <CssBaseline/>
                 <MuiThemeProvider theme={theme}>
+                    <CssBaseline/>
                     <App/>
                 </MuiThemeProvider>
             </Provider>

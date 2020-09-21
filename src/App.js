@@ -1,6 +1,6 @@
 import React from 'react';
 import AppBar from './components/AppBar/AppBar.jsx';
-import {HashRouter, Route, Switch, withRouter} from 'react-router-dom';
+import {Route, Switch, withRouter} from 'react-router-dom';
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
@@ -16,9 +16,11 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 
 const styles = theme => ({
     root: {
-        maxWidth : 480,
+        maxWidth: 480,
         margin: '0 auto',
-        paddingBottom: 100
+        paddingBottom: 100,
+        background: '#fff',
+        minHeight: '100vh'
     }
 });
 
@@ -44,38 +46,38 @@ class App extends React.Component {
 
         const {classes} = this.props;
         return (
-            <div className={classes.root}>
-                <HeaderContainer />
-                <div>
-                    <Switch>
-                        <Route path='/profile/:userId?'
-                               render={WithSuspense(ProfileContainer)}
-                        />
+                <div className={classes.root}>
+                    <HeaderContainer/>
+                    <div>
+                        <Switch>
+                            <Route path='/profile/:userId?'
+                                   render={WithSuspense(ProfileContainer)}
+                            />
 
-                        <Route exact path='/'
-                               render={WithSuspense(ProfileContainer)}
-                        />
+                            <Route exact path='/'
+                                   render={WithSuspense(ProfileContainer)}
+                            />
 
-                        <Route exact path='/dialogs'
-                               render={WithSuspense(DialogsContainer)}
-                        />
+                            <Route exact path='/dialogs'
+                                   render={WithSuspense(DialogsContainer)}
+                            />
 
-                        <Route exact path='/users'
-                               render={WithSuspense(UsersContainer)}
-                        />
+                            <Route exact path='/users'
+                                   render={WithSuspense(UsersContainer)}
+                            />
 
-                        <Route exact path='/login'
-                               render={WithSuspense(Login)}
-                        />
+                            <Route exact path='/login'
+                                   render={WithSuspense(Login)}
+                            />
 
-                        <Route path='*'
-                               render={() => {
-                                   return <div>404 not found</div>;
-                               }}/>
-                    </Switch>
+                            <Route path='*'
+                                   render={() => {
+                                       return <div>404 not found</div>;
+                                   }}/>
+                        </Switch>
+                    </div>
+                    <AppBar/>
                 </div>
-                <AppBar/>
-            </div>
         );
     }
 }
