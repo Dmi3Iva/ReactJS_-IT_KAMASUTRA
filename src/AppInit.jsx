@@ -17,6 +17,19 @@ const theme = createMuiTheme({
                         minHeight: '100%'
                     }
                 }
+            },
+            MuiIconButton: {
+                color: {
+                    default: {
+                        primary: 'white'
+                    }
+                }
+            },
+            MuiButton:{
+                color: 'white',
+                text:{
+                    color: 'white'
+                }
             }
         },
         palette: {
