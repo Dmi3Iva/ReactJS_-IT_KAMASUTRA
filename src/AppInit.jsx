@@ -8,9 +8,9 @@ import {withStyles} from "@material-ui/core/styles/withStyles";
 
 const theme = createMuiTheme({
         overrides: {
-            MuiCssBaseline:{
-                '@global':{
-                    body:{
+            MuiCssBaseline: {
+                '@global': {
+                    body: {
                         minHeight: '100%'
                     },
                     '#root': {
@@ -18,16 +18,19 @@ const theme = createMuiTheme({
                     }
                 }
             },
-            MuiIconButton: {
-                color: {
-                    default: {
-                        primary: 'white'
-                    }
+            MuiBottomNavigationAction: {
+                root: {
+                    color: '#effaff'
                 }
             },
-            MuiButton:{
+            MuiSvgIcon: {
+                root: {
+                    fill: '#effaff'
+                }
+            },
+            MuiButton: {
                 color: 'white',
-                text:{
+                text: {
                     color: 'white'
                 }
             }
