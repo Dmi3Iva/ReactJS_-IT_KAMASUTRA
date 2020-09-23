@@ -1,6 +1,6 @@
 import React from 'react';
 import {reduxForm} from "redux-form";
-import {createSimpleField, Input} from "../Common/FormsControls/FormsControls";
+import {Checkbox, createSimpleField, Input} from "../Common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
@@ -13,9 +13,9 @@ const LoginForm = ({handleSubmit, error,  captchaUrl}) => {
     return (
         <div>
             <form action="/" method="GET" onSubmit={handleSubmit}>
-                {createSimpleField('Login', 'login', required, Input)}
-                {createSimpleField('password', 'password', required, Input, 'password')}
-                {createSimpleField('', 'rememberMe',  null, Input, 'checkbox', 'rememberMe')}
+                {createSimpleField('Email', 'login', required, Input)}
+                {createSimpleField('Password', 'password', required, Input, 'password')}
+                {createSimpleField('', 'RememberMe',  null, Checkbox, 'checkbox', 'rememberMe')}
 
                 {error && <div className={style.formSummaryError}>
                     {error}

@@ -21,13 +21,14 @@ const theme = createMuiTheme({
             MuiBottomNavigationAction: {
                 root: {
                     color: '#effaff'
-                }
+                },
+                MuiSvgIcon: {
+                    root: {
+                        fill: '#effaff'
+                    }
+                },
             },
-            MuiSvgIcon: {
-                root: {
-                    fill: '#effaff'
-                }
-            },
+
             MuiButton: {
                 color: 'white',
                 text: {
