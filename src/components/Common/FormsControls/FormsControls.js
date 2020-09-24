@@ -5,7 +5,6 @@ import CheckboxUI from "@material-ui/core/Checkbox";
 import withStyles from "@material-ui/core/styles/withStyles";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
-
 const styles = theme => ({
         formControl: {
             marginBottom: 15
@@ -60,14 +59,12 @@ export const Input = (props) => {
 }
 
 export const Checkbox = (props) => {
-    console.log(props);
-    const {input, meta, child, ...restProps} = props;
+    const {input, meta, child, text, ...restProps} = props;
     return <FormControl {...props}>
         <FormControlLabel
             control={<CheckboxUI {...input} {...restProps} />}
-            label={'Remeb'}
+            label={text}
         >
-
         </FormControlLabel>
     </FormControl>
 }
@@ -81,7 +78,8 @@ export const createSimpleField = (placeHolder, name, validators, component, type
             validate={validators}
             component={component}
             type={type}
+            text={text}
         />
-        {text}
+        {type !== 'checkbox' ? text : ''}
     </div>
 );

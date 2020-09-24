@@ -1,7 +1,7 @@
 import React from 'react';
 import AppBar from './components/AppBar/AppBar.jsx';
 import {Route, Switch, withRouter} from 'react-router-dom';
-import UsersContainer from "./components/Users/UsersContainer";
+import SearchContainer from "./components/Users/SearchContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import Preloader from "./components/Common/Preloader/Preloader";
@@ -72,7 +72,7 @@ class App extends React.Component {
                             />
 
                             <Route exact path='/search'
-                                   render={WithSuspense(UsersContainer)}
+                                   render={WithSuspense(SearchContainer)}
                             />
 
 

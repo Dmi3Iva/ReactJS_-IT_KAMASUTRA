@@ -37,7 +37,7 @@ const Description = (props) => {
             </div>
             {editMode
                 ? <ProfileDataForm initialValues={props.profile} turnOffEditMode={() => setEditMode(false)}/>
-                : <ProfileData profile={props.profile} turnOnEditMode={() => setEditMode(true)}/>
+                : <ProfileData isOwner={props.isOwner} profile={props.profile} turnOnEditMode={() => setEditMode(true)}/>
             }
         </div>
     );

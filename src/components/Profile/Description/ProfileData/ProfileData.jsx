@@ -4,7 +4,7 @@ import React from "react";
 const ProfileData = (props) => {
     return (
         <div>
-            <button onClick={props.turnOnEditMode}>Edit</button>
+            {props.isOwner && <button onClick={props.turnOnEditMode}>Edit</button> }
             <div className="fullName">{props.profile.fullName}</div>
             <div className="aboutMe">{props.profile.aboutMe}</div>
 

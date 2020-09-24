@@ -2,7 +2,7 @@ import React from 'react';
 import Paginator from '../Common/Paginator/Paginator';
 import User from "./User";
 
-const Users = ({
+const Search = ({
                    currentPage, pageSize, totalUsersCount,
                    onPageChanged, followingInProgress, follow, unfollow,
                    users
@@ -31,4 +31,4 @@ const Users = ({
     );
 }
 
-export default Users;
+export default Search;

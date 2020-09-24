@@ -35,6 +35,7 @@ const DescriptionContainerWithHooks = (props) => {
                 onChangeStatus={onChangeStatus}
                 setStatus={setAboutMe}
                 setEditMode={setEditMode}
+                isOwner={props.isOwner}
             />
         );
 }

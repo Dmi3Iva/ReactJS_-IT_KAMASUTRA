@@ -1,15 +1,8 @@
 import {connect} from "react-redux";
-import {
-    follow,
-    requestUsers,
-    toggleFollowingInProgress,
-    toggleIsFetching,
-    unfollow,
-} from "../../redux/users-reducer";
+import {follow, requestUsers, toggleFollowingInProgress, toggleIsFetching, unfollow,} from "../../redux/users-reducer";
 import React from "react";
-import Users from "./Users";
+import Search from "./Search";
 import Preloader from "../Common/Preloader/Preloader";
-import {Redirect} from "react-router-dom";
 import {
     getCurrentPage,
     getFollowingInProgress,
@@ -20,7 +13,7 @@ import {
 } from "../../redux/users-selector";
 import {getIsAuth} from "../../redux/auth-selector";
 
-class UsersContainer extends React.Component {
+class SearchContainer extends React.Component {
 
     componentDidMount() {
         this.props.requestUsers(this.props.currentPage, this.props.pageSize);
@@ -33,7 +26,7 @@ class UsersContainer extends React.Component {
     render() {
         return (<>
                 {this.props.isFetching ? <Preloader/> : null}
-                <Users
+                <Search
                     totalUsersCount={this.props.totalUsersCount}
                     pageSize={this.props.pageSize}
                     users={this.props.users}
@@ -65,4 +58,4 @@ export default connect(mapStateToProps,
         toggleIsFetching, toggleFollowingInProgress,
         requestUsers
     }
-)(UsersContainer);
+)(SearchContainer);

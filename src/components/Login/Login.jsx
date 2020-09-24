@@ -5,22 +5,26 @@ import {required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
-import style from "./login.module.css";
 import Button from "@material-ui/core/Button";
+import withStyles from "@material-ui/core/styles/withStyles";
 
+const styles = theme => ({
+    formSummaryError: {
+        border: '2px solid red',
+        padding: 5,
+        color: 'tomato',
+        marginTop: 50
+    }
+});
 
-const LoginForm = ({handleSubmit, error,  captchaUrl}) => {
+const LoginForm = ({handleSubmit, error, captchaUrl, classes}) => {
     return (
         <div>
             <form action="/" method="GET" onSubmit={handleSubmit}>
                 {createSimpleField('Email', 'login', required, Input)}
                 {createSimpleField('Password', 'password', required, Input, 'password')}
-                {createSimpleField('', 'RememberMe',  null, Checkbox, 'checkbox', 'rememberMe')}
+                {createSimpleField('', 'RememberMe', null, Checkbox, 'checkbox', 'rememberMe')}
 
-                {error && <div className={style.formSummaryError}>
-                    {error}
-                </div>
-                }
                 {captchaUrl && <>
                     <img src={captchaUrl} alt="resolve this captcha"/>
                     {createSimpleField('captcha', 'captcha', required, Input)}
@@ -28,6 +32,10 @@ const LoginForm = ({handleSubmit, error,  captchaUrl}) => {
                 <div>
                     <Button color="primary" variant="contained" type="submit">Login</Button>
                 </div>
+                {error && <div className={classes.formSummaryError}>
+                    {error}
+                </div>
+                }
             </form>
         </div>
     );
@@ -35,7 +43,7 @@ const LoginForm = ({handleSubmit, error,  captchaUrl}) => {
 
 const LoginReduxForm = reduxForm({
     form: 'login'
-})(LoginForm);
+})(withStyles(styles)(LoginForm));
 
 const Login = (props) => {
 

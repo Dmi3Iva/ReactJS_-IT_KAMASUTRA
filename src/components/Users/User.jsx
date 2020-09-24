@@ -1,7 +1,15 @@
 import React from "react";
-import styles from "./users.module.css";
 import defaultUserPhoto from "../assets/freepik-avatar.jpg";
 import {NavLink} from "react-router-dom";
+import DefaultUserAvatar from "../Common/DefaultUserAvatar/DefaultUserAvatar";
+import withStyles from "@material-ui/core/styles/withStyles";
+
+const styles = theme => ({
+    avatar: {
+        width: 100,
+        height: 100
+    }
+});
 
 const User = ({
                   id: userId,
@@ -12,17 +20,23 @@ const User = ({
                   unfollow,
                   follow,
                   status,
+                  classes
               }) => {
     return (
         <div key={userId}>
       <span>
         <div>
           <NavLink to={`/profile/${userId}`}>
-            <img
-                className={styles.userPhoto}
-                src={photos.small != null ? photos.small : defaultUserPhoto}
-                alt={`avatar of ${name}`}
-            />
+              {
+                  photos.small ?
+                      <img
+                          className={classes.avatar}
+                          src={photos.small != null ? photos.small : defaultUserPhoto}
+                          alt={`avatar of ${name}`}
+                      />
+                      :
+                      <DefaultUserAvatar className={classes.avatar}/>
+              }
           </NavLink>
         </div>
         <div>
@@ -57,4 +71,4 @@ const User = ({
     );
 };
 
-export default User;
+export default withStyles(styles)(User);

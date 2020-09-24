@@ -1,20 +1,35 @@
 import React from 'react';
-import styles from './Avatar.module.css'
-import userPhoto from '../../assets/freepik-avatar.jpg';
 import {connect} from "react-redux";
 import {saveProfilePhoto} from "../../../redux/profile-reducer";
+import withStyles from "@material-ui/core/styles/withStyles";
+import DefaultUserAvatar from "../../Common/DefaultUserAvatar/DefaultUserAvatar";
 
 
-function Avatar(props){
+const styles = theme => ({
+	avatar: {
+		width: 250,
+		height: 250
+	}
+});
+
+function Avatar({classes, onAvatarSelected, photos, isOwner}){
+
 	return(
 			<div className={styles.avatar}>
-				<img src={props.photos.small || userPhoto} className={styles.avatar__photo} alt="ava "/>
-				{props.isOwner && <input type={"file"} onChange={props.onAvatarSelected}/>}
+				{
+					photos.small ?
+						<img src={photos.small} className={classes.avatar__photo} alt="ava "/>
+						:
+						<DefaultUserAvatar className={classes.avatar}/>
+				}
+				{isOwner && <input type={"file"} onChange={onAvatarSelected}/>}
 			</div>
 	);
 }
 
-const AvatarContainer = (props)=>{
+const AvatarContainer =
+	withStyles(styles)(
+	(props)=>{
 	const onAvatarSelected = (e) => {
 		if( e.target.files.length)
 		{
@@ -22,7 +37,7 @@ const AvatarContainer = (props)=>{
 		}
 	}
 	return <Avatar {...props} onAvatarSelected={onAvatarSelected} />;
-};
+});
 
 const mapStateToProps = (state, ownProps) => ({
 	...ownProps,
