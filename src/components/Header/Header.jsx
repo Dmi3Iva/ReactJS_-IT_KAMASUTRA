@@ -5,7 +5,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
 
 const styles = theme => {
-    console.log(theme);
     return {
         root: {
             background: theme.palette.primary.main,

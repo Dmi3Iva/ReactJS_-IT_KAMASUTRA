@@ -1,9 +1,9 @@
 import {authAPI, securityAPI} from "../api/api";
-import {stopSubmit} from "redux-form";
+import {stopSubmit, reset} from "redux-form";
 
-const AUTH_PREFIX = 'AUTH_REDUCER/'
+const AUTH_PREFIX = 'AUTH_REDUCER/';
 const SET_USER_DATA = AUTH_PREFIX + 'SET_USER_DATA';
-const GET_CAPTCHA_URL_SUCCESS = AUTH_PREFIX + 'GET_CAPTCHA_URL_SUCCESS ';
+export const GET_CAPTCHA_URL_SUCCESS = AUTH_PREFIX + 'GET_CAPTCHA_URL_SUCCESS';
 
 let initialState = {
     userId: null,
