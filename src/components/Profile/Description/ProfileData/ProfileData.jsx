@@ -19,14 +19,14 @@ const ProfileData = (props) => {
                     (props.profile.contacts.length !== 0) &&
                     Object.keys(props.profile.contacts).map(c =>
                         (
-                            <>
-                                <dt className={"contacts_item"} key={c}>
+                            <div key={c}>
+                                <dt className={"contacts_item"}>
                                     {c}
                                 </dt>
-                                <dd key={c + 'Prop'}>
+                                <dd>
                                     {props.profile.contacts[c]}
                                 </dd>
-                            </>
+                            </div>
                         )
                     )
                 }

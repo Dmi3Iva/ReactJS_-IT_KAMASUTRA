@@ -46,7 +46,7 @@ function AppBar(props) {
                 showLabels
                 className={classes.menu}
             >
-                <BottomNavigationAction component={NavLink} to="/profile" label={"Profile"} icon={<PersonIcon color="white"/>}/>
+                <BottomNavigationAction component={NavLink} to="/profile" label={"Profile"} icon={<PersonIcon/>}/>
                 <BottomNavigationAction component={NavLink} to="/dialogs" label={"Dialogs"} icon={<ChatIcon/>}/>
                 {/*
                 TODO: add article icon

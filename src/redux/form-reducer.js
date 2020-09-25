@@ -5,7 +5,6 @@ export default formReducer.plugin({
     login: (state, action) => {
         switch (action.type) {
             case GET_CAPTCHA_URL_SUCCESS: {
-                console.log('we are in captcha changes');
                 return {
                     ...state,
                     values: {...state.values, captcha: null}
