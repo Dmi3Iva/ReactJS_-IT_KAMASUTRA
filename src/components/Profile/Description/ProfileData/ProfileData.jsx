@@ -15,10 +15,20 @@ const styles = theme => ({
     contacts: {
         display: 'flex',
         flexWrap: 'wrap',
+        margin: '2px 0 0 0',
 
         '& > a': {
 
         }
+    },
+    definition:{
+        fontWeight: 'bold'
+    },
+    contactsHeading:{
+        marginBottom: 5
+    },
+    editButton: {
+        marginTop: 15
     }
 });
 
@@ -74,20 +84,20 @@ const ProfileData = (props) => {
 
     return (
         <div>
-            <div className="fullName">{props.profile.fullName}</div>
-            <div className="aboutMe">{props.profile.aboutMe}</div>
+            <div className={classes.definition}>{props.profile.fullName}</div>
+            <div><span className={classes.definition}>About me:</span>{props.profile.aboutMe}</div>
             <div>
-                {props.profile.lookingForAJob && props.profile.lookingForAJobDescription}
+                {props.profile.lookingForAJob && <><span><span className={classes.definition}>User looking for a job: </span>{props.profile.lookingForAJobDescription}</span></>}
             </div>
             <div>
-                {(props.profile.contacts.length !== 0) && "Социальные сети"}
+                {(props.profile.contacts.length !== 0) && <div className={classes.definition+ ' ' + classes.contactsHeading}>Контакты:</div>}
             </div>
             {mySite !== null && <div>
                 <Link href={mySite.website}>My web site</Link>
             </div>
             }
             {mainLink !== null && <div>
-                <Link href={mainLink.mainLink}>mainLink</Link>
+                <Link href={mainLink.mainLink}>My link</Link>
             </div>
 
             }
@@ -105,7 +115,7 @@ const ProfileData = (props) => {
             </dl>
             {
                 props.isOwner &&
-                <Button color={'primary'} variant={'contained'} onClick={props.turnOnEditMode}>Edit my profile</Button>
+                <Button className={classes.editButton} color={'primary'} variant={'contained'} onClick={props.turnOnEditMode}>Edit my profile</Button>
             }
         </div>);
 }

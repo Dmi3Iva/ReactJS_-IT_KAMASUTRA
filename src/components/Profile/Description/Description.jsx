@@ -1,26 +1,38 @@
 import React, {useState} from 'react';
-import style from './Description.module.css';
 import ProfileData from './ProfileData/ProfileData';
 import ProfileDataForm from './ProfileDataForm/ProfileDataForm';
+import withStyles from "@material-ui/core/styles/withStyles";
+
+const styles = theme => ({
+    status:{
+        marginBottom: 10
+    },
+    definition: {
+        fontWeight: 'bold'
+    }
+});
 
 const Description = (props) => {
 
     const [editMode, setEditMode] = useState(false);
 
+    const {classes} = props;
+
     return (
         <div>
-            <div className="status" style={{fontFamily: 'Roboto', color: 'tomato'}}>
+            <div className={classes.status} >
+                <span className={classes.definition}>Status: </span>
                 {
-                    !props.editMode &&
-                    <div>
-                    <span
-                        onDoubleClick={() => {
-                            props.setEditMode(true)
-                        }}
-                    >
-                        {props.status || "-----"}
-                    </span>
-                    </div>
+                    !props.editMode && props.isOwner ?
+                            <span
+                                onDoubleClick={() => {
+                                    props.setEditMode(true)
+                                }}
+                            >
+                            {props.status || "-----"}
+                        </span>
+                            :
+                        !props.editMode && <span>{props.status || "-----"}</span>
                 }
 
                 {
@@ -37,14 +49,12 @@ const Description = (props) => {
             </div>
             {editMode
                 ? <ProfileDataForm initialValues={props.profile} turnOffEditMode={() => setEditMode(false)}/>
-                : <ProfileData isOwner={props.isOwner} profile={props.profile} turnOnEditMode={() => setEditMode(true)}/>
+                :
+                <ProfileData isOwner={props.isOwner} profile={props.profile} turnOnEditMode={() => setEditMode(true)}/>
             }
         </div>
     );
 }
 
 
-
-
-
-export default Description;
+export default withStyles(styles)(Description);
