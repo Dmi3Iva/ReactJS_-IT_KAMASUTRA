@@ -9,8 +9,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 
 const styles = theme => ({
     avatar: {
-        width: 250,
-        height: 250
+        maxHeight: 250,
+        objectFit: 'contain'
     },
     uploadButton:{
         margin:"10px 0 20px"
@@ -24,9 +24,11 @@ function Avatar({classes, onAvatarSelected, photos, isOwner}) {
         <div className={styles.avatar}>
             {
                 photos.small ?
-                    <div><img src={photos.large} className={classes.avatar__photo} alt="ava "/></div>
+                    <div>
+                        <img src={photos.large} className={classes.avatar}/>
+                    </div>
                     :
-                    <DefaultUserAvatar className={classes.avatar}/>
+                    <div><DefaultUserAvatar className={classes.avatar}/></div>
             }
             {isOwner &&
                 <Button variant={'contained'} color={'primary'} component={"label"} className={classes.uploadButton}>
